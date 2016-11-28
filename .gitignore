@@ -1,0 +1,5 @@
+.idea
+market.iml
+target
+out/artifacts/market_war_exploded
+*.iml
