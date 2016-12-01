@@ -10,7 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration.Dynamic;
 
 
-public class AppInitializer implements WebApplicationInitializer {
+public class Initializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) {
