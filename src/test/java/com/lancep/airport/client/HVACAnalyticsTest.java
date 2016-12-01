@@ -7,21 +7,21 @@ import static org.junit.Assert.assertThat;
 
 public class HVACAnalyticsTest {
 
-    HVACAnalytics subject = new HVACAnalytics();
+    private HVACAnalytics subject = new HVACAnalytics();
 
-   @Test
-   public void canGetDay() {
-       long day = 1234l;
-       subject.setDay(day);
-       assertThat(subject.getDay(), is(day));
-   }
+    @Test
+    public void canGetDay() {
+        long day = 1234l;
+        subject.setDay(day);
+        assertThat(subject.getDay(), is(day));
+    }
 
-   @Test
-   public void canGetCoolingUsed() {
-       boolean isUsed = true;
-       subject.setCoolingUsed(isUsed);
-       assertThat(subject.isCoolingUsed(), is(isUsed));
-   }
+    @Test
+    public void canGetCoolingUsed() {
+        boolean isUsed = true;
+        subject.setCoolingUsed(isUsed);
+        assertThat(subject.isCoolingUsed(), is(isUsed));
+    }
 
     @Test
     public void canGetHeatingUsed() {

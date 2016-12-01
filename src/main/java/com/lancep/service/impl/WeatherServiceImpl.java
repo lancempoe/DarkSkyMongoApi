@@ -24,11 +24,8 @@ public class WeatherServiceImpl implements WeatherService {
     private static final Logger logger = Logger.getLogger( WeatherService.class.getName() );
     private static final String AIRPORT_GEO_LOCATION = "45.5898,-122.5951";
 
-    @Autowired
     private MongoDBConfig mongoConfig;
-    @Autowired
     private DarkSkyService darkSkyService;
-
 
     public List<HVACAnalytics> getAirportHVACAnalytics(Long startDates, Long endDate) {
         List<HVACAnalytics> hvacAnalyticsList = new ArrayList<>();
@@ -74,5 +71,15 @@ public class WeatherServiceImpl implements WeatherService {
             throw new WeatherException(Response.Status.GATEWAY_TIMEOUT);
         }
         return data;
+    }
+
+    @Autowired
+    public void setMongoConfig(MongoDBConfig mongoConfig) {
+        this.mongoConfig = mongoConfig;
+    }
+
+    @Autowired
+    public void setDarkSkyService(DarkSkyService darkSkyService) {
+        this.darkSkyService = darkSkyService;
     }
 }

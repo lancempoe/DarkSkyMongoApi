@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class WeatherExceptionTest {
 
-    WeatherException subject;
+    private WeatherException subject;
 
     @Test
     public void constructorSetsTheStatus() throws Exception {

@@ -19,10 +19,10 @@ import static org.junit.Assert.assertThat;
 
 public class DarkSkyServiceTest {
 
-    @Tested DarkSkyServiceImpl subject;
-    @Injectable Client client;
-    @Injectable WebTarget webTarget;
-    @Injectable Builder builder;
+    private @Tested DarkSkyServiceImpl subject;
+    private @Injectable Client client;
+    private @Injectable WebTarget webTarget;
+    private @Injectable Builder builder;
 
     DarkSkyForecast darkSkyForecast = new DarkSkyForecast();
 

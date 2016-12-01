@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class HealthResourceTest {
 
-    HealthResource subject = new HealthResource();
+    private HealthResource subject = new HealthResource();
 
     @Test
     public void amIAwakeReturnsOk() throws Exception {

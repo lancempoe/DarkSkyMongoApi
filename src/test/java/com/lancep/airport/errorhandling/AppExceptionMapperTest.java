@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 
 public class AppExceptionMapperTest {
 
-    AppExceptionMapper subject = new AppExceptionMapper();
+    private final AppExceptionMapper subject = new AppExceptionMapper();
 
     @Test
     public void willMapWarExceptionStatusToResponse() throws Exception {

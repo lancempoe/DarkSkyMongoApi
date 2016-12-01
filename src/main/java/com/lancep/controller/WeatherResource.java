@@ -1,4 +1,4 @@
-package com.lancep.controller.game;
+package com.lancep.controller;
 
 import com.lancep.service.WeatherService;
 import com.lancep.airport.client.HVACAnalytics;
@@ -19,7 +19,7 @@ import static com.lancep.controller.validation.WeatherValidations.hasValidDatePa
 @Path("weather")
 public class WeatherResource {
 
-    @Autowired private WeatherService weatherService;
+    private WeatherService weatherService;
 
     @POST
     @Path("airport")
@@ -34,4 +34,8 @@ public class WeatherResource {
                        .build();
     }
 
+    @Autowired
+    public void setWeatherService(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 }

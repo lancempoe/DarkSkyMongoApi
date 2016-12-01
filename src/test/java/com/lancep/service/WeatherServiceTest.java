@@ -20,10 +20,10 @@ import static org.junit.Assert.assertThat;
 
 public class WeatherServiceTest {
 
-    @Tested WeatherServiceImpl subject;
-    @Injectable DarkSkyService darkSkyService;
-    @Injectable MongoDBConfig mongoDBConfig;
-    @Injectable MongoTemplate mongoOperation;
+    private @Tested WeatherServiceImpl subject;
+    private @Injectable DarkSkyService darkSkyService;
+    private @Injectable MongoDBConfig mongoDBConfig;
+    private @Injectable MongoTemplate mongoOperation;
 
     private AirportDailyWeather savedDailyWeather1 = new AirportDailyWeather();
     private AirportDailyWeather savedDailyWeather2 = new AirportDailyWeather();

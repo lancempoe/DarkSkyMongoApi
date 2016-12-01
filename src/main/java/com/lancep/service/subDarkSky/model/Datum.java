@@ -28,7 +28,7 @@ import java.util.Map;
     "cloudCover",
     "pressure"
 })
-public class Datum {
+class Datum {
 
     @JsonProperty("time")
     private Integer time;

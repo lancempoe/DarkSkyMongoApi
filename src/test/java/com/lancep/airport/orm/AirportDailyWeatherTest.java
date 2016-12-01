@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class AirportDailyWeatherTest {
 
-    AirportDailyWeather subject = new AirportDailyWeather();
+    private final AirportDailyWeather subject = new AirportDailyWeather();
 
     @Test
     public void canGetId() {

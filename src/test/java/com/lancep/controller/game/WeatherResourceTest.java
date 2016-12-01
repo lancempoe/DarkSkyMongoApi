@@ -1,6 +1,7 @@
 package com.lancep.controller.game;
 
 import com.lancep.airport.client.HVACAnalytics;
+import com.lancep.controller.WeatherResource;
 import com.lancep.service.WeatherService;
 import mockit.Expectations;
 import mockit.Injectable;

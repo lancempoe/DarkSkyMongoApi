@@ -22,8 +22,7 @@ public class DateUtil {
 
     private static ZonedDateTime getStartOfDay(Long date) {
         ZonedDateTime zonedDate = ZonedDateTime.ofInstant( Instant.ofEpochSecond(date), ZoneId.systemDefault());
-        ZonedDateTime startOfDay = zonedDate.truncatedTo(ChronoUnit.DAYS);
-        return startOfDay;
+        return zonedDate.truncatedTo(ChronoUnit.DAYS);
     }
 
     /**
