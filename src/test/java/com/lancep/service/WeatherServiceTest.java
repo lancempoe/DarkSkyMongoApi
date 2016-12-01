@@ -4,6 +4,7 @@ import com.lancep.airport.client.HVACAnalytics;
 import com.lancep.airport.errorhandling.WeatherException;
 import com.lancep.airport.orm.AirportDailyWeather;
 import com.lancep.config.MongoDBConfig;
+import com.lancep.service.impl.WeatherServiceImpl;
 import mockit.Expectations;
 import mockit.Injectable;
 import mockit.Tested;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertThat;
 
 public class WeatherServiceTest {
 
-    @Tested WeatherService subject;
+    @Tested WeatherServiceImpl subject;
     @Injectable DarkSkyService darkSkyService;
     @Injectable MongoDBConfig mongoDBConfig;
     @Injectable MongoTemplate mongoOperation;

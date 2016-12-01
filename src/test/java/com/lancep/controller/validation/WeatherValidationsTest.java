@@ -11,12 +11,12 @@ public class WeatherValidationsTest {
 
     @Test
     public void handlesValidDates() {
-        WeatherValidations.hasValidDateParams(getDaysAgoAsEpoch(1),getDaysAgoAsEpoch(0));
+        WeatherValidations.hasValidDateParams(getDaysAgoAsEpoch(2),getDaysAgoAsEpoch(1));
     }
 
     @Test(expected = WeatherException.class)
     public void failedWhenDatesAreOutOfOrder() {
-        WeatherValidations.hasValidDateParams(getDaysAgoAsEpoch(0),getDaysAgoAsEpoch(1));
+        WeatherValidations.hasValidDateParams(getDaysAgoAsEpoch(1),getDaysAgoAsEpoch(2));
     }
 
     @Test(expected = WeatherException.class)

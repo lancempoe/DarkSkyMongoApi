@@ -2,6 +2,7 @@ package com.lancep.service;
 
 import com.lancep.airport.errorhandling.WeatherException;
 import com.lancep.airport.orm.AirportDailyWeather;
+import com.lancep.service.impl.DarkSkyServiceImpl;
 import com.lancep.service.subDarkSky.model.DarkSkyForecast;
 import mockit.*;
 import org.junit.Before;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertThat;
 
 public class DarkSkyServiceTest {
 
-    @Tested DarkSkyService subject;
+    @Tested DarkSkyServiceImpl subject;
     @Injectable Client client;
     @Injectable WebTarget webTarget;
     @Injectable Builder builder;
@@ -30,7 +31,7 @@ public class DarkSkyServiceTest {
         new MockUp<ClientBuilder>()
         {
             @Mock
-            Client newClcient()
+            Client newClient()
             {
                 return client;
             }
