@@ -25,7 +25,6 @@ public class Initializer implements WebApplicationInitializer {
 
         // Manage the lifecycle of the root application context
         servletContext.addListener(new ContextLoaderListener(rootContext));
-        servletContext.getContextPath();
 
         //Add jersey servlet
         ServletContainer jerseyServlet = new ServletContainer(new RestApplication());
