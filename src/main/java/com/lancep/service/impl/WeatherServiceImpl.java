@@ -30,7 +30,7 @@ public class WeatherServiceImpl implements WeatherService {
     public List<HVACAnalytics> getAirportHVACAnalytics(Long startDates, Long endDate) {
         List<HVACAnalytics> hvacAnalyticsList = new ArrayList<>();
         List<Long> cleanedDates = DateUtil.getStartOfDaysFromDates(startDates, endDate);
-        cleanedDates.stream().forEach(date -> {
+        cleanedDates.forEach(date -> {
             HVACAnalytics hvacAnalytics = getAirportHVACAnalytics(date);
             hvacAnalyticsList.add(hvacAnalytics);
         });

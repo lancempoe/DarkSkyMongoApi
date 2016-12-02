@@ -31,7 +31,7 @@ public class Flags {
     @JsonProperty("units")
     private String units;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<String> getSources() {
         return sources;

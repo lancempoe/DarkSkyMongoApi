@@ -9,11 +9,9 @@ import static org.junit.Assert.assertThat;
 
 public class WeatherExceptionTest {
 
-    private WeatherException subject;
-
     @Test
     public void constructorSetsTheStatus() throws Exception {
-        subject = new WeatherException(Status.FORBIDDEN);
+        WeatherException subject = new WeatherException(Status.FORBIDDEN);
         assertThat(subject.getStatus(), is(Status.FORBIDDEN));
     }
 

@@ -24,7 +24,7 @@ public class Daily {
     @Valid
     private List<Datum_> data = new ArrayList<Datum_>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<Datum_> getData() {
         return data;

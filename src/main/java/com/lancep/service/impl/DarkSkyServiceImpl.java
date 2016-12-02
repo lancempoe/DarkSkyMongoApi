@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 public class DarkSkyServiceImpl implements DarkSkyService {
 
     private static final Logger logger = Logger.getLogger(DarkSkyForecast.class.getName());
-    private static final String HTTPS_API_DARKSKY_NET_FORECAST = "https://api.darksky.net/forecast";
-    private static final String KEY = "PUT YOUR KEY HERE"; //TODO DO NOT COMMIT THIS LINE
+    private static final String HTTPS_API_DARK_SKY_NET_FORECAST = "https://api.darksky.net/forecast";
+    private static final String KEY = "PUT_YOUR_KEY_HERE"; //TODO DO NOT COMMIT THIS LINE
     private Client client;
 
     @PostConstruct
@@ -31,7 +31,7 @@ public class DarkSkyServiceImpl implements DarkSkyService {
     public AirportDailyWeather getDailyWeather(String geoLocation, Long epochMilli) {
         DarkSkyForecast darkSkyForecast;
         try {
-            String url = String.format("%s/%s/%s,%s", HTTPS_API_DARKSKY_NET_FORECAST, KEY, geoLocation, epochMilli);
+            String url = String.format("%s/%s/%s,%s", HTTPS_API_DARK_SKY_NET_FORECAST, KEY, geoLocation, epochMilli);
             URI uri = new URI(url);
             WebTarget target = client
                     .target(uri)

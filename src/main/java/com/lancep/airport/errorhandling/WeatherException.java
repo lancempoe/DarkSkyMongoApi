@@ -5,7 +5,7 @@ import javax.ws.rs.core.Response.Status;
 
 public class WeatherException extends RuntimeException {
 
-    private Status status;
+    private final Status status;
 
     public WeatherException(Status status) {
         this(status, null);

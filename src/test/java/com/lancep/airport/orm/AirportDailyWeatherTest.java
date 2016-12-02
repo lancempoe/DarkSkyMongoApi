@@ -12,7 +12,7 @@ public class AirportDailyWeatherTest {
 
     @Test
     public void canGetId() {
-        long id = 123l;
+        long id = 123L;
         subject.setId(id);
         assertThat(subject.getId(), is(id));
     }

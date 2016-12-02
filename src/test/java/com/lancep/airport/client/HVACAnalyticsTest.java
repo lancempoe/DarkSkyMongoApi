@@ -5,13 +5,14 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("ConstantConditions")
 public class HVACAnalyticsTest {
 
-    private HVACAnalytics subject = new HVACAnalytics();
+    private final HVACAnalytics subject = new HVACAnalytics();
 
     @Test
     public void canGetDay() {
-        long day = 1234l;
+        long day = 1234L;
         subject.setDay(day);
         assertThat(subject.getDay(), is(day));
     }

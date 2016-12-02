@@ -89,7 +89,7 @@ public class Datum_ {
     @JsonProperty("pressure")
     private Double pressure;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getTime() {
         return time;

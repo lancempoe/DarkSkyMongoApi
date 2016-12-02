@@ -16,14 +16,10 @@ import static org.junit.Assert.assertThat;
 public class HVACAnalyticsAssemblerTest {
 
     private AirportDailyWeather dailyWeather;
-    private Long date = 123l;
-    private Daily daily = new Daily();
-    private List<Datum_> data = new ArrayList<>();
-    private Datum_ datum = new Datum_();
-    private Double HOT_DAY = new Double(76);
-    private Double NOT_HOT_DAY = new Double(75);
-    private Double NOT_COLD_DAY = new Double(62);
-    private Double COLD_DAY = new Double(61);
+    private final Long date = 123L;
+    private final Daily daily = new Daily();
+    private final List<Datum_> data = new ArrayList<>();
+    private final Datum_ datum = new Datum_();
 
     @Before
     public void init() {
@@ -37,6 +33,7 @@ public class HVACAnalyticsAssemblerTest {
 
     @Test
     public void willSetCoolingUsedOnCoolDays() {
+        Double HOT_DAY = 76d;
         DarkSkyForecast darkSkyForecast = buildWeatherDay(null, HOT_DAY);
         dailyWeather.setDarkSkyForecast(darkSkyForecast);
         assertThat(HVACAnalyticsAssembler.toClient(dailyWeather).isCoolingUsed(), is(true));
@@ -44,6 +41,7 @@ public class HVACAnalyticsAssemblerTest {
 
     @Test
     public void willNotSetCoolingUsedOnCoolDays() {
+        Double NOT_HOT_DAY = 75d;
         DarkSkyForecast darkSkyForecast = buildWeatherDay(null, NOT_HOT_DAY);
         dailyWeather.setDarkSkyForecast(darkSkyForecast);
         assertThat(HVACAnalyticsAssembler.toClient(dailyWeather).isCoolingUsed(), is(false));
@@ -51,6 +49,7 @@ public class HVACAnalyticsAssemblerTest {
 
     @Test
     public void willSetHeatingUsedOnCoolDays() {
+        Double COLD_DAY = 61d;
         DarkSkyForecast darkSkyForecast = buildWeatherDay(COLD_DAY, null);
         dailyWeather.setDarkSkyForecast(darkSkyForecast);
         assertThat(HVACAnalyticsAssembler.toClient(dailyWeather).isHeatingUsed(), is(true));
@@ -58,6 +57,7 @@ public class HVACAnalyticsAssemblerTest {
 
     @Test
     public void willNotSetHeatingUsedOnCoolDays() {
+        Double NOT_COLD_DAY = 62d;
         DarkSkyForecast darkSkyForecast = buildWeatherDay(NOT_COLD_DAY, null);
         dailyWeather.setDarkSkyForecast(darkSkyForecast);
         assertThat(HVACAnalyticsAssembler.toClient(dailyWeather).isHeatingUsed(), is(false));

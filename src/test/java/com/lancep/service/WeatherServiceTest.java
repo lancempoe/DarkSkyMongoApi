@@ -25,12 +25,12 @@ public class WeatherServiceTest {
     private @Injectable MongoDBConfig mongoDBConfig;
     private @Injectable MongoTemplate mongoOperation;
 
-    private AirportDailyWeather savedDailyWeather1 = new AirportDailyWeather();
-    private AirportDailyWeather savedDailyWeather2 = new AirportDailyWeather();
-    private AirportDailyWeather newDailyWeather1 = new AirportDailyWeather();
-    private AirportDailyWeather newDailyWeather2 = new AirportDailyWeather();
-    private static final Long START_DATE = 1480147200l;
-    private static final Long END_DATE = 1480233600l;
+    private final AirportDailyWeather savedDailyWeather1 = new AirportDailyWeather();
+    private final AirportDailyWeather savedDailyWeather2 = new AirportDailyWeather();
+    private final AirportDailyWeather newDailyWeather1 = new AirportDailyWeather();
+    private final AirportDailyWeather newDailyWeather2 = new AirportDailyWeather();
+    private static final Long START_DATE = 1480147200L;
+    private static final Long END_DATE = 1480233600L;
 
 
     @Before

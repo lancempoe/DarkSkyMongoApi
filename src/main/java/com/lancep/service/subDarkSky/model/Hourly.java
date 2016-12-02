@@ -30,7 +30,7 @@ public class Hourly {
     @Valid
     private List<Datum> data = new ArrayList<Datum>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getSummary() {
         return summary;

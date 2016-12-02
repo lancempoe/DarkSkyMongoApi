@@ -12,7 +12,7 @@ public class WeatherValidations {
     private static final String INVALID_DATE = "Invalid dates param. Unable to parse future dates";
 
     public static void hasValidDateParams(Long ... dates) {
-        final Long[] priorDate = {0l};
+        final Long[] priorDate = {0L};
         Arrays.stream(dates).forEach(date -> hasValidDateParam(priorDate, date));
     }
 

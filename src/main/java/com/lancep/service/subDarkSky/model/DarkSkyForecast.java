@@ -46,7 +46,7 @@ public class DarkSkyForecast {
     @Valid
     private Flags flags;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Double getLatitude() {
         return latitude;

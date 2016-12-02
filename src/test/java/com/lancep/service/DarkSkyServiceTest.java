@@ -17,6 +17,7 @@ import java.net.URI;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("ConstantConditions")
 public class DarkSkyServiceTest {
 
     private @Tested DarkSkyServiceImpl subject;
@@ -24,7 +25,7 @@ public class DarkSkyServiceTest {
     private @Injectable WebTarget webTarget;
     private @Injectable Builder builder;
 
-    DarkSkyForecast darkSkyForecast = new DarkSkyForecast();
+    private DarkSkyForecast darkSkyForecast = new DarkSkyForecast();
 
     @Before
     public void init() {
@@ -47,14 +48,15 @@ public class DarkSkyServiceTest {
 
     @Test
     public void canGetDarkSkyForecastFromDailyWeather() {
-        AirportDailyWeather dailyWeather = subject.getDailyWeather("geoLocatoin", 1234567l);
+        long day = 1234567L;
+        AirportDailyWeather dailyWeather = subject.getDailyWeather("geoLocation", day);
         assertThat(dailyWeather.getDarkSkyForecast(), is(darkSkyForecast));
     }
 
     @Test
     public void canGetIdFromDailyWeather() {
-        long id = 1234567l;
-        AirportDailyWeather dailyWeather = subject.getDailyWeather("geoLocatoin", id);
+        long id = 1234567L;
+        AirportDailyWeather dailyWeather = subject.getDailyWeather("geoLocation", id);
         assertThat(dailyWeather.getId(), is(id));
     }
 
@@ -67,7 +69,7 @@ public class DarkSkyServiceTest {
             builder.get(DarkSkyForecast.class); result = new Exception();
         }};
 
-        subject.getDailyWeather("geoLocatoin", 1234567l);
+        subject.getDailyWeather("geoLocation", 1234567L);
     }
 
 }

@@ -27,7 +27,7 @@ public class WeatherResourceTest {
     private static final ZonedDateTime NOW = ZonedDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
     private static final Long START_DATE = NOW.minusDays(2).toEpochSecond();
     private static final Long END_DATE = NOW.minusDays(1).toEpochSecond();
-    private List<HVACAnalytics> results = new ArrayList<>();
+    private final List<HVACAnalytics> results = new ArrayList<>();
 
     @Test
     public void getAirportAnalyticsRespondsOk() throws Exception {
