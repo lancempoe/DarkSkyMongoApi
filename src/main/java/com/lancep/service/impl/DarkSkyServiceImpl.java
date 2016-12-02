@@ -20,7 +20,7 @@ public class DarkSkyServiceImpl implements DarkSkyService {
 
     private static final Logger logger = Logger.getLogger(DarkSkyForecast.class.getName());
     private static final String HTTPS_API_DARK_SKY_NET_FORECAST = "https://api.darksky.net/forecast";
-    private static final String KEY = "064506b3557e35e0e58881471a1e161e"; //TODO DO NOT COMMIT THIS LINE
+    private static final String KEY = "YOUR_KEY";
     private Client client;
 
     @PostConstruct
