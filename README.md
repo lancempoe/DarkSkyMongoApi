@@ -19,6 +19,9 @@ therefore lower the usage cost.
 - mongo-java-driver _2_
 - spring-data-mongodb _1.2_
 
+I'm building with Gradle:
+- gradle _3.2.1_
+
 In this project I also tested with difference frameworks
 - junit _4.10_
 - JMockit _1.24_

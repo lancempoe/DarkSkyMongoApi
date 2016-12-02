@@ -18,7 +18,7 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-@SuppressWarnings({"CanBeFinal", "unused"})
+@SuppressWarnings({"CanBeFinal", "unused", "unchecked"})
 public class WeatherServiceTest {
 
     private @Tested WeatherServiceImpl subject;
