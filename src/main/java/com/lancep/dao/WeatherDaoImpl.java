@@ -55,13 +55,16 @@ public class WeatherDaoImpl implements WeatherDao {
 
     @Override
     public List<AirportDailyWeather> findByIds(List<Long> timeKeys) {
+        List<AirportDailyWeather> dailyWeatherList;
         Query query = new Query();
         query.addCriteria(Criteria.where("id").in(timeKeys)).with(DEFAULT_SORT_ORDER);
         try {
-            return mongoTemplate.find(query, AirportDailyWeather.class);
+            dailyWeatherList = mongoTemplate.find(query, AirportDailyWeather.class);
+            logger.info(String.format("Found existing AirportDailyWeather reports"));
         } catch (Exception e) {
             logger.warning(String.format("Failed to connect to DB: %s", e));
             throw new WeatherException(Response.Status.BAD_GATEWAY);
         }
+            return dailyWeatherList;
     }
 }

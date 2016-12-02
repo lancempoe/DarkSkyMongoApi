@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -72,15 +73,14 @@ public class WeatherServiceTest {
     @Test(expected = WeatherException.class)
     public void handlesWhenMongoIsDownWhenSaving() {
         new Expectations() {{
-            weatherDao.findById(START_DATE); result = new WeatherException(Response.Status.BAD_GATEWAY);
+            weatherDao.findByIds((List<Long>)any); result = new WeatherException(Response.Status.BAD_GATEWAY);
         }};
         subject.getAirportHVACAnalytics(START_DATE, END_DATE);
     }
 
     private void setExpectationsWhenDatesInDB() {
         new Expectations() {{
-            weatherDao.findById(START_DATE); result = savedDailyWeather1; minTimes = 1;
-            weatherDao.findById(END_DATE); result = savedDailyWeather2; minTimes = 1;
+            weatherDao.findByIds((List<Long>)any); result = Arrays.asList(savedDailyWeather1,savedDailyWeather2); minTimes = 1;
             darkSkyService.getDailyWeather(anyString, START_DATE); result = newDailyWeather1; maxTimes = 0;
             darkSkyService.getDailyWeather(anyString, END_DATE); result = newDailyWeather2; maxTimes = 0;
         }};
@@ -88,8 +88,7 @@ public class WeatherServiceTest {
 
     private void setExpectationsWhenDataNotInDB() {
         new Expectations() {{
-            weatherDao.findById(START_DATE); result = null;
-            weatherDao.findById(END_DATE); result = null;
+            weatherDao.findByIds((List<Long>)any); result = null;
             darkSkyService.getDailyWeather(anyString, START_DATE); result = newDailyWeather1; minTimes = 1;
             darkSkyService.getDailyWeather(anyString, END_DATE); result = newDailyWeather2; minTimes = 1;
         }};

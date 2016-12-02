@@ -16,5 +16,5 @@ import org.springframework.context.annotation.Configuration;
 @SuppressWarnings("JavaDoc")
 @Configuration
 @ComponentScan(value={"com.lancep.*"})
-public class SpringRootConfiguration {
+public class SpringInjector {
 }

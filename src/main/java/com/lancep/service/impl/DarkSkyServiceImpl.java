@@ -41,6 +41,7 @@ public class DarkSkyServiceImpl implements DarkSkyService {
             logger.warning(String.format("Failed to contact DarkSky: %s",e.getMessage()));
             throw new WeatherException(Response.Status.REQUEST_TIMEOUT);
         }
+        logger.info(String.format("Retrieved Data from DarkSky for day %d", epochMilli));
         return getAirportDailyWeather(epochMilli, darkSkyForecast);
     }
 
