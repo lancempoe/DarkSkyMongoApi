@@ -2,29 +2,23 @@ package com.lancep.service.impl;
 
 import com.lancep.airport.assembler.HVACAnalyticsAssembler;
 import com.lancep.airport.client.HVACAnalytics;
-import com.lancep.airport.errorhandling.WeatherException;
 import com.lancep.airport.orm.AirportDailyWeather;
-import com.lancep.config.MongoDBConfig;
+import com.lancep.dao.WeatherDao;
 import com.lancep.service.DarkSkyService;
 import com.lancep.service.WeatherService;
 import com.lancep.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mapping.model.MappingException;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Component
 public class WeatherServiceImpl implements WeatherService {
 
-    private static final Logger logger = Logger.getLogger( WeatherService.class.getName() );
     private static final String AIRPORT_GEO_LOCATION = "45.5898,-122.5951";
 
-    private MongoDBConfig mongoConfig;
+    private WeatherDao weatherDao;
     private DarkSkyService darkSkyService;
 
     public List<HVACAnalytics> getAirportHVACAnalytics(Long startDates, Long endDate) {
@@ -39,7 +33,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     private HVACAnalytics getAirportHVACAnalytics(Long date) {
-        AirportDailyWeather dailyWeather = getSavedAirportDailyWeather(date);
+        AirportDailyWeather dailyWeather = weatherDao.findById(date);
         if (dailyWeather == null) {
             dailyWeather = darkSkyService.getDailyWeather(AIRPORT_GEO_LOCATION, date);
             saveAirportDailyWeather(dailyWeather);
@@ -48,34 +42,12 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     private void saveAirportDailyWeather(AirportDailyWeather dailyWeather) {
-        try {
-            MongoOperations mongoOperation = mongoConfig.mongoTemplate();
-            mongoOperation.save(dailyWeather);
-            logger.info(String.format("New AirportDailyWeather Created: %s", dailyWeather.getId()));
-        } catch (Exception e) {
-            logger.warning(String.format("Failed to save AirportDailyWeather: %d, %s", dailyWeather.getId(), e));
-            throw new WeatherException(Response.Status.GATEWAY_TIMEOUT);
-        }
-    }
-
-    private AirportDailyWeather getSavedAirportDailyWeather(Long timeKey) {
-        AirportDailyWeather data = null;
-        try {
-            MongoOperations mongoOperation = mongoConfig.mongoTemplate();
-            data = mongoOperation.findById(timeKey, AirportDailyWeather.class);
-            logger.info(String.format("Existing AirportDailyWeather Reused: %s", timeKey));
-        } catch (MappingException e) {
-            logger.info(String.format("AirportDailyWeather with key of %d not found", timeKey));
-        } catch (Exception e) {
-            logger.warning(String.format("Failed to get AirportDailyWeather: %d, %s", timeKey, e));
-            throw new WeatherException(Response.Status.GATEWAY_TIMEOUT);
-        }
-        return data;
+        weatherDao.save(dailyWeather);
     }
 
     @Autowired
-    public void setMongoConfig(MongoDBConfig mongoConfig) {
-        this.mongoConfig = mongoConfig;
+    public void setWeatherDao(WeatherDao weatherDao) {
+        this.weatherDao = weatherDao;
     }
 
     @Autowired
