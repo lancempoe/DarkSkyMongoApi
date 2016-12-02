@@ -17,7 +17,7 @@ import java.net.URI;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "CanBeFinal", "unused"})
 public class DarkSkyServiceTest {
 
     private @Tested DarkSkyServiceImpl subject;

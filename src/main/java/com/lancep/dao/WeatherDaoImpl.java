@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class WeatherDaoImpl implements WeatherDao {
 
     private static final Logger logger = Logger.getLogger( WeatherDaoImpl.class.getName() );
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     @Autowired
     public WeatherDaoImpl(MongoTemplate mongoTemplate) {
