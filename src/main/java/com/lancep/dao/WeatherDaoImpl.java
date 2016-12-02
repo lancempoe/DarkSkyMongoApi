@@ -3,8 +3,13 @@ package com.lancep.dao;
 import com.lancep.airport.errorhandling.WeatherException;
 import com.lancep.airport.orm.AirportDailyWeather;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mapping.model.MappingException;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.ws.rs.core.Response;
@@ -16,6 +21,7 @@ public class WeatherDaoImpl implements WeatherDao {
 
     private static final Logger logger = Logger.getLogger( WeatherDaoImpl.class.getName() );
     private final MongoTemplate mongoTemplate;
+    private static final Sort DEFAULT_SORT_ORDER = new Sort(new Order(Direction.ASC, "id"));
 
     @Autowired
     public WeatherDaoImpl(MongoTemplate mongoTemplate) {
@@ -49,6 +55,13 @@ public class WeatherDaoImpl implements WeatherDao {
 
     @Override
     public List<AirportDailyWeather> findByIds(List<Long> timeKeys) {
-        return null;
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").in(timeKeys)).with(DEFAULT_SORT_ORDER);
+        try {
+            return mongoTemplate.find(query, AirportDailyWeather.class);
+        } catch (Exception e) {
+            logger.warning(String.format("Failed to connect to DB: %s", e));
+            throw new WeatherException(Response.Status.BAD_GATEWAY);
+        }
     }
 }
