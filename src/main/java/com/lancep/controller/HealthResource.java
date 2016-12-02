@@ -1,13 +1,13 @@
 package com.lancep.controller;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Component
+@Controller
 @Path("health")
 public class HealthResource {
 

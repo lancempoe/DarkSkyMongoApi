@@ -8,12 +8,12 @@ import com.lancep.service.DarkSkyService;
 import com.lancep.service.WeatherService;
 import com.lancep.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class WeatherServiceImpl implements WeatherService {
 
     private static final String AIRPORT_GEO_LOCATION = "45.5898,-122.5951";

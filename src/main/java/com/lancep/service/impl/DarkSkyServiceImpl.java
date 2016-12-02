@@ -4,7 +4,7 @@ import com.lancep.airport.errorhandling.WeatherException;
 import com.lancep.airport.orm.AirportDailyWeather;
 import com.lancep.service.DarkSkyService;
 import com.lancep.service.subDarkSky.model.DarkSkyForecast;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.client.Client;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.logging.Logger;
 
-@Component
+@Service
 public class DarkSkyServiceImpl implements DarkSkyService {
 
     private static final Logger logger = Logger.getLogger(DarkSkyForecast.class.getName());

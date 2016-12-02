@@ -1,9 +1,9 @@
 package com.lancep.controller;
 
-import com.lancep.service.WeatherService;
 import com.lancep.airport.client.HVACAnalytics;
+import com.lancep.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.lancep.controller.validation.WeatherValidations.hasValidDateParams;
 
-@Component
+@Controller
 @Path("weather")
 public class WeatherResource {
 
